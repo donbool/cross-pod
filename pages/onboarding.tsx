@@ -31,14 +31,6 @@ export default function Onboarding() {
     setLoading(false);
   };
 
-  const handleGoogle = async () => {
-    setLoading(true);
-    setError('');
-    const { error } = await supabase.auth.signInWithOAuth({ provider: 'google' });
-    if (error) setError(error.message);
-    setLoading(false);
-  };
-
   const handleProfile = async () => {
     setLoading(true);
     setError('');
@@ -144,13 +136,6 @@ export default function Onboarding() {
               disabled={loading}
             >
               Sign Up
-            </button>
-            <button
-              className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600"
-              onClick={handleGoogle}
-              disabled={loading}
-            >
-              Sign in with Google
             </button>
             {error && <p className="text-red-500 mt-2">{error}</p>}
             {/* TODO: Add validation, error handling, and loading states */}
